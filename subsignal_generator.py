@@ -1,11 +1,41 @@
-# subsignal_generator_test.py
-"""Generates Haar wavelet and scaling vectors for multiple levels of analysis and
-extracts the subsignal and detail signals for multiple levels from an original
-signal"""
+# Haar_wavelet.py
+"""Generates Haar wavelet and scaling vectors for multiple levels of analysis, 
+extracts the trend subsignal and fluctuation signal for multiple levels from an 
+original signal, and generates the average trend and detail signal for each
+level of analysis"""
 
 from __future__ import division
 import math
 import numpy as np
+
+def generate_level_avg_signals(trend_data, fluctuation_data, level):
+    level_averaged_signal = []
+    level_detail_signal = []
+    all_scalings = []
+    all_wavelets = []    
+    level_counter = 1  
+    while level_counter <= level:
+        A_k = [0]* len(f)
+        D_k = A_k
+        k_level_scaling = generate_mlevel_vectors(len(f), level_counter, 'a')
+        k_level_wavelet = generate_mlevel_vectors(len(f), level_counter, 'd')
+        all_scalings.append(k_level_scaling)
+        all_wavelets.append(k_level_wavelet)
+        length_level_wavelet = len(all_scalings[level_counter-1])
+        length_level_trend = len(trends[level_counter-1])
+        for m in range(0, length_level_wavelet):
+            V_k_m = all_scalings[level_counter-1][m]
+            W_k_m = all_wavelets[level_counter-1][m]
+            a_m = trends[level_counter-1][m]
+            d_m = fluctuations[level_counter-1][m]
+            A_m = np.dot(a_m,V_k_m)
+            D_m = np.dot(d_m,W_k_m)
+            A_k = A_k + A_m
+            D_k = D_k + D_m
+        level_detail_signal.append(D_k) 
+        level_averaged_signal.append(A_k)
+        level_counter +=1
+    return level_averaged_signal, level_detail_signal
 
 def generate_fluctuation_trend_subsignals(signal, level):
     """Generates the detail and subsignals for each level from an original signal.
@@ -66,6 +96,10 @@ if __name__ == "__main__":
     f = [4,6,10,12,8,6,5,5]
     levels = 3
     trends, fluctuations = generate_fluctuation_trend_subsignals(f,levels)
+    avg_signals, detail_signals = generate_level_avg_signals(trends,
+                                                             fluctuations,
+                                                             levels)
+       
      
 
         
