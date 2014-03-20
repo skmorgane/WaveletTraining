@@ -6,7 +6,7 @@ import subsignal_generator as haar
 
 #2.1.A: Calculating the first level Haar transform of signal
 f_21A = [2,2,2,4,4,4]
-a_21A, d_21A = haar.generate_detail_subsignals(f_21A, 1)
+a_21A, d_21A = haar.generate_fluctuation_trend_subsignals(f_21A, 1)
 
 #Example2.1.D: Computing first  trend subsignal and first fluctuations for the following signals
 f_21D_a = [2,4,6,6,4,2]
