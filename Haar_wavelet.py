@@ -42,8 +42,8 @@ def generate_level_avg_signals(trend_data, fluctuation_data, level):
     return level_averaged_signal, level_detail_signal
 
 def generate_fluctuation_trend_subsignals(signal, level):
-    """Generates the detail and subsignals for each level from an original signal.
-    Requires the original signal and the number of levels to be analyzed as 
+    """Generates the fluctuation and trend subsignals for each level from an 
+    original signal. Requires the original signal and the number of levels as 
     inputs. Calls the function generate_mlevel_vectors() to generate the scaling
     and wavelet vectors for each level of analysis.""" 
     level_subsignals = []
@@ -73,10 +73,11 @@ def generate_fluctuation_trend_subsignals(signal, level):
     return level_subsignals, level_fluctuations
 
 def generate_mlevel_vectors(length, kth_level, flavor):
-    """Generates the m-level Haar wavelet/scaling vectors for a particular
-    level of wavelet analysis. Takes info on length of the original signal
-    the level of analysis to be conducted and whether the vector to be generated
-    is the scaling signal (a) or the wavelets(d)"""
+    """Generates the m-level Haar wavelet and scaling signals (i.e. the
+    elementary signals)for a particular level of wavelet analysis. Takes info 
+    on length of the original signal the level of analysis to be conducted and 
+    whether the vector to be generated is the scaling signal (a) or the wavelets
+    (d)"""
     m = int(length/2)
     m_vectors = []
     value = (1/math.sqrt(2)) ** kth_level  
