@@ -1,3 +1,8 @@
+# wavelet_generator_test.py
+"""Generates Haar wavelet and scaling vectors for multiple levels of analysis and
+extracts the subsignal and detail signals for multiple levels from an original
+signal"""
+
 from __future__ import division
 import math
 import numpy as np
