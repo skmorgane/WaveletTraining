@@ -19,7 +19,6 @@ def generate_detail_subsignals(signal, level):
     all_wavelets = []    
     length = len(signal)
     level_counter = 1  
-    signal = f  
     while level_counter <= level:
         a_k = []
         d_k = []    
@@ -31,8 +30,8 @@ def generate_detail_subsignals(signal, level):
         for m in range(0, length_level_wavelet):
             V_k_m = all_scalings[level_counter-1][m]
             W_k_m = all_wavelets[level_counter-1][m]
-            a = np.dot(f,V_k_m)
-            d = np.dot(f,W_k_m)
+            a = np.dot(signal,V_k_m)
+            d = np.dot(signal,W_k_m)
             a_k.append(a)
             d_k.append(d)
         level_details.append(d_k) 
