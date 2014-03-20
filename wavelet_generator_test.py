@@ -56,10 +56,12 @@ def generate_mlevel_vectors(length, kth_level, flavor):
         m_vectors.append(m_vector)
     return m_vectors
 
-"""main code"""    
-f = [4,6,10,12,8,6,5,5]
-levels = 3
-subsignals, detail_signals = generate_detail_subsignals(f,levels)
+
+if __name__ == "__main__":
+    """main code"""
+    f = [4,6,10,12,8,6,5,5]
+    levels = 3
+    subsignals, detail_signals = generate_detail_subsignals(f,levels)
 
 
         
