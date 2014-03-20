@@ -2,7 +2,7 @@ from __future__ import division
 import math
 import numpy as np
 
-def generate_signal_detail_subsignals(signal, level):
+def generate_detail_subsignals(signal, level):
     """Generates the detail and subsignals for each level from an original signal.
     Requires the original signal and the number of levels to be analyzed as 
     inputs. Calls the function generate_mlevel_vectors() to generate the scaling
@@ -59,7 +59,7 @@ def generate_mlevel_vectors(length, kth_level, flavor):
 """main code"""    
 f = [4,6,10,12,8,6,5,5]
 levels = 3
-subsignals, detail_signals = generate_signal_detail_subsignals(f,levels)
+subsignals, detail_signals = generate_detail_subsignals(f,levels)
 
 
         
