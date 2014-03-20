@@ -7,14 +7,14 @@ from __future__ import division
 import math
 import numpy as np
 
-def generate_detail_subsignals(signal, level):
+def generate_fluctuation_trend_subsignals(signal, level):
     """Generates the detail and subsignals for each level from an original signal.
     Requires the original signal and the number of levels to be analyzed as 
     inputs. Calls the function generate_mlevel_vectors() to generate the scaling
     and wavelet vectors for each level of analysis."""
     
     level_subsignals = []
-    level_details = []
+    level_fluctuations = []
     all_scalings = []
     all_wavelets = []    
     length = len(signal)
@@ -34,10 +34,10 @@ def generate_detail_subsignals(signal, level):
             d = np.dot(signal,W_k_m)
             a_k.append(a)
             d_k.append(d)
-        level_details.append(d_k) 
+        level_fluctuations.append(d_k) 
         level_subsignals.append(a_k)
         level_counter +=1        
-    return level_subsignals, level_details
+    return level_subsignals, level_fluctuations
 
 def generate_mlevel_vectors(length, kth_level, flavor):
     """Generates the m-level Haar wavelet/scaling vectors for a particular
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     """main code"""
     f = [4,6,10,12,8,6,5,5]
     levels = 3
-    subsignals, detail_signals = generate_detail_subsignals(f,levels)
-
+    trends, fluctuations = generate_fluctuation_trend_subsignals(f,levels)
+     
 
         
