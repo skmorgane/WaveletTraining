@@ -3,6 +3,11 @@ import math
 import numpy as np
 
 def generate_signal_detail_subsignals(signal, level):
+    """Generates the detail and subsignals for each level from an original signal.
+    Requires the original signal and the number of levels to be analyzed as 
+    inputs. Calls the function generate_mlevel_vectors() to generate the scaling
+    and wavelet vectors for each level of analysis."""
+    
     level_subsignals = []
     level_details = []
     all_scalings = []
