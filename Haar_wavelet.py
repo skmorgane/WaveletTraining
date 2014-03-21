@@ -94,6 +94,9 @@ def generate_mlevel_vectors(length, kth_level, flavor):
         m_vectors.append(m_vector)
     return m_vectors
 
+def inverse_transform(average_signal, details_signal):
+    return average_signal + details_signal
+
 if __name__ == "__main__":
     """main code"""
     f = [4,6,10,12,8,6,5,5]
@@ -102,6 +105,8 @@ if __name__ == "__main__":
     avg_signals, detail_signals = generate_level_avg_signals(trends,
                                                              fluctuations,
                                                              levels)
+    f_est = inverse_transform(avg_signals[0], detail_signals[0])
+    
        
      
 
